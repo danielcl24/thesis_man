@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="120.0" prefWidth="450.0" styleClass="cell_container" stylesheets="@../styles/temas_cell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="titulo_lbl" layoutX="14.0" layoutY="21.0" styleClass="titulo" text="Titulo" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0" />
+   <Label fx:id="remun_lbl" layoutX="178.0" layoutY="10.0" styleClass="remuneracao" text="1000.0€" AnchorPane.leftAnchor="178.0" AnchorPane.topAnchor="10.0" />
+   <Label fx:id="mestrados_lbl" layoutX="287.0" layoutY="10.0" styleClass="mestrados" text="Mestrados: m1, m2, m3" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="10.0" />
+   <Label fx:id="desc_lbl" layoutX="14.0" layoutY="42.0" styleClass="desc" text="Description:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
+   <TextArea fx:id="desc_box" layoutX="15.2" layoutY="60.8" prefHeight="53.0" prefWidth="420.0" styleClass="desc_box" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="61.0" />
+</AnchorPane>

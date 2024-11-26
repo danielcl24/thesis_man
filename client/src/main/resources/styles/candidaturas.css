@@ -1,0 +1,41 @@
+.main_candidaturas_container {
+    -fx-background-color: white;
+}
+
+.title {
+    -fx-font-size: 2.0em;
+}
+
+.sub_title {
+    -fx-font-size: 1.4em;
+}
+
+.cancelar_button {
+    -fx-pref-width: 150;
+    -fx-pref-height: 40;
+    -fx-background-color: #2c3fb1;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-font-size: 1.1em;
+}
+
+.candidaturas_listview {
+    -fx-background-color: #EEEEEE;
+    -fx-border-width: 0 0 0 0;
+    -fx-border-color: #AAAAAA;
+}
+
+.list-cell {
+    -fx-background-color: #EEEEEE;
+    -fx-padding: 10 10 10 10;
+}
+
+.list-cell:selected {
+    -fx-border-width: 2 2 2 2;
+    -fx-border-color: #2c3fb1;
+}
+
+.status_lbl {
+    -fx-text-fill: #2c3fb1;
+    -fx-font-weight: 700;
+}

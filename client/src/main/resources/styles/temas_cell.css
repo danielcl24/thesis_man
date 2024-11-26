@@ -1,0 +1,31 @@
+.cell_container {
+    -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 7);
+}
+
+
+.titulo {
+    -fx-text-fill: #2c3fb1;
+    -fx-font-weight: 700;
+}
+
+.remuneracao {
+    -fx-text-fill: #000000;
+    -fx-font-weight: 700;
+}
+
+.mestrados {
+    -fx-text-fill: #000000;
+    -fx-font-weight: 700;
+}
+
+.desc {
+    -fx-text-fill: #000000;
+    -fx-font-weight: 700;
+}
+
+.desc_box {
+    -fx-text-fill: #000000;
+    -fx-border-width: 0 0 0 0;
+}

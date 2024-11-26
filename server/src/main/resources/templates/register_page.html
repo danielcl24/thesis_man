@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt_PT">
+
+<head>
+    <meta charset="ISO-8859-1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <title>Register</title>
+</head>
+
+<body>
+    <a th:href="@{/login}"><button>Back</button></a>
+    <div class = register>
+        <p>Are you a business user and don't have an account yet?</p>
+        <p>Register now!</p>
+        <form action="/register/new" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="surname">Surname:</label><br>
+            <input type="text" id="surname" name="surname"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Register">
+        </form>
+        <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
+    </div>
+</body>

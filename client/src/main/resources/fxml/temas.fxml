@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="main_temas_container" stylesheets="@../styles/temas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesisman.client.controllers.TemasController">
+   <Text fx:id="user_name" layoutX="3.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_name" text="Themes" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
+   <Text layoutX="37.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="temas_titulo" text="Available themes" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
+   <ListView fx:id="listView" layoutX="20.0" layoutY="117.0" prefHeight="300.0" prefWidth="500.0" styleClass="temas_listview" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0" />
+   <Button fx:id="candidatar_button" layoutX="22.0" layoutY="443.0" mnemonicParsing="false" styleClass="candidatar_button" text="Apply" />
+   <Label fx:id="status_lbl" layoutX="163.0" layoutY="454.0" styleClass="status_lbl" />
+</AnchorPane>

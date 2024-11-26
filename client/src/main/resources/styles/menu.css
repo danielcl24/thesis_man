@@ -1,0 +1,48 @@
+.main_menu_container {
+    -fx-background-color: white;
+    -fx-alignment: center;
+}
+
+.left_container {
+    -fx-background-color: white;
+
+}
+
+.title_container {
+    -fx-background-color: #2c3fb1;
+    -fx-alignment: top-center;
+    -fx-padding: 10;
+}
+
+.title_container Text {
+    -fx-fill: white;
+    -fx-font-size: 2em;
+}
+
+.menu_container {
+    -fx-padding: 10 10 10 20;
+    -fx-spacing: 20;
+}
+
+.menu_container Button {
+    -fx-pref-width: 115;
+    -fx-pref-height: 40;
+    -fx-background-color: #2c3fb1;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-font-size: 1.1em;
+}
+
+.menu_container Button:hover {
+    -fx-cursor: hand;
+}
+
+.alt_menu_button {
+    -fx-pref-width: 115;
+    -fx-pref-height: 40;
+    -fx-background-color: white;
+    -fx-text-fill: #2c3fb1;
+    -fx-alignment: center-left;
+    -fx-font-size: 1.1em;
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 5, 0, 0, 6);
+}

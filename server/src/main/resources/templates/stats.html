@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body th:replace="~{layout :: layout(~{::section} , ~{::scripts})}">
+    <section>
+        <h1>Students Statistics</h1>
+        <h3>Sucess Rate:</h3>
+        <p th:if="${successRate == null}" th:text="'No data available'"></p>
+        <p th:if="${successRate != null}" th:text="${successRate}"></p>
+        <h3>Average Grade:</h3>
+        <p th:if="${averageGrade == null}" th:text="'No data available'"></p>
+        <p th:if="${averageGrade != null}" th:text="${averageGrade}"></p>
+    </section>
+    <div th:fragment="scripts"> </div>
+</body>
+
+</html>

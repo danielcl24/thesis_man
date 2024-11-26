@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../styles/tese.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesisman.client.controllers.TeseErroController">
+   <Text layoutX="24.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Thesis" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
+   <Text layoutX="31.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub_title" text="Looks like you haven't started a thesis yet..." AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
+</AnchorPane>

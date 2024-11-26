@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="main_tese_container" stylesheets="@../styles/tese.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="thesisman.client.controllers.TeseController">
+   <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Thesis" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
+   <Text layoutX="21.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub_title" text="Thesis proposal" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
+   <Button fx:id="proposta_button" layoutX="18.0" layoutY="140.0" mnemonicParsing="false" styleClass="submeter_button" text="Submit file" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="140.0" />
+   <Text fx:id="proposta_lbl" layoutX="20.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="200.0" />
+   <Text layoutX="20.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub_title" text="Final thesis" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="240.0" />
+   <Button fx:id="final_button" layoutX="20.0" layoutY="293.0" mnemonicParsing="false" styleClass="submeter_button" text="Submit file" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="290.0" />
+   <Text fx:id="final_lbl" layoutX="20.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="350.0" />
+   <Button fx:id="proposta_button1" layoutX="225.0" layoutY="140.0" mnemonicParsing="false" styleClass="submeter_button" text="Select file" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="140.0" />
+   <Button fx:id="final_button1" layoutX="225.0" layoutY="297.0" mnemonicParsing="false" styleClass="submeter_button" text="Select file" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="290.0" />
+</AnchorPane>

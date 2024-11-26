@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body th:replace="~{layout :: layout(~{::section} , ~{::scripts})}">
+    <section>
+        <h2 >Final defenses of thesis projects</h2>
+        <div th:if="${isFinalDefense}">
+            <div th:if="${projList.empty}">
+                <p>No projects found</p>
+            </div>
+            <div th:if="${projList.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Theme</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <tr th:each="proj : ${projList}">
+                            <td th:text="${proj.aluno.name}"></td>
+                            <td th:text="${proj.tema.titulo}"></td>
+                            <td th:text="${proj.aluno.email}"></td>
+                            <td>
+                                <span th:if="${proj.defesa.avaliacao != null}"> <span
+                                        th:text="${proj.defesa.avaliacao}"></span></span>
+                                <span th:if="${proj.defesa.avaliacao == null}"> <span>Not graded</span></span>
+                            </td>
+                            <td th:if="${proj.defesa.avaliacao == null}">
+                                <form th:action="@{/grades/finalDefenses}" method="post">
+                                    <input type="hidden" th:name="id" th:value="${proj.id}" />
+                                    <input type="number" th:name="avaliacao" min="0" max="20" />
+                                    <button type="submit">Grade</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2>Final defenses of thesis dissertations</h2>
+            <div th:if="${dissList.empty}">
+                <p>No thesis found</p>
+            </div>
+            <div th:if="${dissList.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Theme</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="diss : ${dissList}">
+                            <td th:text="${diss.aluno.name}"></td>
+                            <td th:text="${diss.tema.titulo}"></td>
+                            <td th:text="${diss.aluno.email}"></td>
+                            <td>
+                                <span th:if="${diss.defesa.avaliacao != null}"> <span
+                                        th:text="${diss.defesa.avaliacao}"></span></span>
+                                <span th:if="${diss.defesa.avaliacao == null}"> <span>Not graded</span></span>
+                            </td>
+                            <td th:if="${diss.defesa.avaliacao == null}">
+                                <form th:action="@{/grades/finalDefenses}" method="post">
+                            <td>
+                                <form th:action="@{/grades/finalDefenses}" method="post">
+                                    <input type="hidden" th:name="id" th:value="${diss.id}" />
+                                    <input type="number" th:name="avaliacao" min="0" max="20" />
+                                    <button type="submit">Grade</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div th:if="${!isFinalDefense}">
+            <h2 >Defenses of project proposals</h2>
+            <div th:if="${projList.empty}">
+                <p>No projects found</p>
+            </div>
+            <div th:if="${projList.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Theme</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="proj : ${projList}">
+                            <td th:text="${proj.aluno.name}"></td>
+                            <td th:text="${proj.tema.titulo}"></td>
+                            <td th:text="${proj.aluno.email}"></td>
+                            <td>
+                                <span th:if="${proj.defesa.avaliacao != null}"> <span
+                                        th:text="${proj.defesa.avaliacao}"></span></span>
+                                <span th:if="${proj.defesa.avaliacao == null}"> <span>Not graded</span></span>
+                            </td>
+                            <td th:if="${proj.defesa.avaliacao == null}">
+                                <form th:action="@{/grades/thesisProposals}" method="post">
+                                    <input type="hidden" th:name="id" th:value="${proj.id}" />
+                                    <input type="number" th:name="avaliacao" min="0" max="20" />
+                                    <button type="submit">Grade</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2>Defenses of thesis dissertation proposals</h2>
+            <div th:if="${dissList.empty}">
+                <p>No thesis found</p>
+            </div>
+            <div th:if="${dissList.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Theme</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="diss : ${dissList}">
+                            <td th:text="${diss.aluno.name}"></td>
+                            <td th:text="${diss.tema.titulo}"></td>
+                            <td th:text="${diss.aluno.email}"></td>
+                            <td>
+                                <span th:if="${diss.defesa.avaliacao != null}"> <span
+                                        th:text="${diss.defesa.avaliacao}"></span></span>
+                                <span th:if="${diss.defesa.avaliacao == null}"> <span>Not graded</span></span>
+                            </td>
+                            <td th:if="${diss.defesa.avaliacao == null}">
+                                <form th:action="@{/grades/thesisProposals}" method="post">
+                                    <input type="hidden" th:name="id" th:value="${diss.id}" />
+                                    <input type="number" th:name="avaliacao" min="0" max="20" />
+                                    <button type="submit">Grade</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </section>
+    <div th:fragment="scripts"> </div>
+</body>
+
+</html>

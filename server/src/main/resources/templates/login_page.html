@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt_PT">
+
+<head>
+    <meta charset="ISO-8859-1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+
+<body>
+    <div class = login>
+        <p>Are you a teacher or a business user?</p>
+        <p>Login now!</p>
+        <form action="/login" method="post">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Login">
+        </form>
+        <div th:if="${errorMessage}" th:text="${errorMessage}" style="color: red;"></div>
+    </div>
+    <div class = register>
+        <p>Are you an business user and don't have an account yet?</p>
+        <p>Register now!</p>
+        <form action="/register" method="get">
+            <input type="submit" value="Register">
+        </form>
+
+</body>
+
+</html>

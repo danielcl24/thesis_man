@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body th:replace="~{layout :: layout(~{::section} , ~{::scripts})}">
+    <section>
+        <div class="assignTheme" th:if="${isAdmin}">
+            <h1>Assign a theme</h1>
+            <p>Admin can assign a theme to a student</p>
+            <p>Click the button below to redirect to the assign theme page</p>
+            <a th:href="@{/themes/assign}"><button>Assign</button></a>
+        </div>
+        <h1>Add a new theme</h1>
+        <form th:action="@{/themes/new}" method="post">
+            <label for="titulo">Title:</label>
+            <input type="text" id="titulo" name="titulo" required="required" />
+            <p></p>
+            <label for="descricao">Description:</label>
+            <input type="text" id="descricao" name="descricao" required="required" />
+            <p></p>
+            <label for="remuneracao">Remuneration:</label>
+            <input type="number" id="remuneracao" name="remuneracao" step="0.01" required="required" />
+            <p></p>
+            <label for="mestradosCompativeis">Compatible Masters (comma-separated):</label>
+            <input type="text" id="mestradosCompativeis" name="mestradosCompativeis" required="required" />
+            <p></p>
+            <button type="submit">Add</button>
+        </form>
+        <h2>My themes</h2>
+        <div th:if="${temas.empty}">
+            <p>No themes found</p>
+        </div>
+        <div th:if="${temas.size() > 0}">
+            <table>
+                <thread>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Remuneration</th>
+                        <th>Compatible Masters</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr th:if="${temas.empty}">
+                        <td colspan="4">No themes found</td>
+                    </tr>
+                    <tr th:each="tema : ${temas}">
+                        <td th:text="${tema.titulo}">Title</td>
+                        <td th:text="${tema.descricao}">Description</td>
+                        <td th:text="${tema.remuneracao}">Remuneration</td>
+                        <td th:text="${tema.mestradosCompativeis}">Compatible Masters</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div th:fragment="scripts"> </div>
+</body>
+
+</html>

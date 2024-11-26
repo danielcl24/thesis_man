@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        #form-container {
+            display: none;
+        }
+    </style>
+</head>
+
+<body th:replace="~{layout :: layout(~{::section}, ~{::scripts})}">
+
+    <section>
+        <h2 th:text="${isFinalDefense} ? 'Master\'s projects' : 'Thesis project proposals' "></h2>
+        <div th:if="${listaProjs.empty}">
+            <p>No projects found</p>
+        </div>
+        <div th:if="${listaProjs.size() > 0}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Theme Title</th>
+                        <th>Thesis File</th>
+                        <th>Has Defense</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="proj : ${listaProjs}">
+                        <td th:text="${proj.aluno.name}"></td>
+                        <td th:text="${proj.tema.titulo}"></td>
+                        <td>
+                            <span th:if="${proj.filename != null}">Submitted file</span>
+                            <span th:if="${proj.filename == null}">Not submitted file</span>
+                        </td>
+                        <td>
+                            <span th:if="${proj.defesa != null}">Yes</span>
+                            <span th:if="${proj.defesa == null}">No</span>
+                        </td>
+                        <td>
+                            <button th:attr="data-id=${proj.id}" class="btn-selecionar">Create Defense</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 th:text="${isFinalDefense} ? 'Master\'s thesis' : 'Thesis dissertation proposals' "></h2>
+        <div th:if="${listaDiss.empty}">
+            <p>No thesis found</p>
+        </div>
+        <div th:if="${listaDiss.size() > 0}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Theme Title</th>
+                        <th>Thesis File</th>
+                        <th>Has Defense</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="diss : ${listaDiss}">
+                        <td th:text="${diss.aluno.name}"></td>
+                        <td th:text="${diss.tema.titulo}"></td>
+                        <td>
+                            <span th:if="${diss.filename != null}">Submitted file</span>
+                            <span th:if="${diss.filename == null}">Not submitted file</span>
+                        </td>
+                        <td>
+                            <span th:if="${diss.defesa != null}">Yes</span>
+                            <span th:if="${diss.defesa == null}">No</span>
+                        </td>
+                        <td>
+                            <button th:attr="data-id=${diss.id}" class="btn-selecionar">Create Defense</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="form-container">
+            <p></p>
+            <div th:if="${isFinalDefense}">
+                <form th:action="@{/defenses/thesis}" method="post">
+                    <input type="hidden" id="idTese" name="idTese">
+                    <label for="data">Date:</label>
+                    <input type="date" id="data" name="data">
+                    <p></p>
+                    <label for="horaComeco">Start time:</label>
+                    <input type="time" id="horaComeco" name="horaComeco">
+
+                    <label for="duracao">Duration:(Minutes)</label>
+                    <input type="number" id="duracao" name="duracao">
+                    <p></p>
+                    <label for="sala">Local:(if online, write 'online')</label>
+                    <input type="text" id="sala" name="sala">
+                    <p></p>
+                    <label for="secondDefendantId">Second defendant:</label>
+                    <select id="secondDefendantId" name="secondDefendantId">
+                        <option th:each="docente : ${listaDocentes}" th:value="${docente.id}" th:text="${docente.name}">
+                        </option>
+                    </select>
+                    <label for="presidentId">President:</label>
+                    <select id="presidentId" name="presidentId">
+                        <option th:each="docente : ${listaDocentes}" th:value="${docente.id}" th:text="${docente.name}">
+                        </option>
+                    </select>
+                    <p></p>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div th:if="${!isFinalDefense}">
+                <form th:action="@{/defenses/thesisProposal}" method="post">
+                    <input type="hidden" id="idTese" name="idTese">
+                    <label for="data">Date:</label>
+                    <input type="date" id="data" name="data">
+                    <p></p>
+                    <label for="horaComeco">Start time:</label>
+                    <input type="time" id="horaComeco" name="horaComeco">
+
+                    <label for="duracao">Duration:(Minutes)</label>
+                    <input type="number" id="duracao" name="duracao">
+                    <p></p>
+                    <label for="sala">Local:(if online, write 'online')</label>
+                    <input type="text" id="sala" name="sala">
+                    <p></p>
+                    <label for="secondDefendantId">Second defendant:</label>
+                    <select id="secondDefendantId" name="secondDefendantId">
+                        <option th:each="docente : ${listaDocentes}" th:value="${docente.id}" th:text="${docente.name}">
+                        </option>
+                    </select>
+                    <p></p>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <p></p>
+            <h3>Defense Schedule</h3>
+            <div th:if="${listaMarcacoes.empty}">
+                <p>No defenses found</p>
+            </div>
+            <div th:if="${listaMarcacoes.size() > 0}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Start time</th>
+                            <th>Duration</th>
+                            <th>Local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="marcacao : ${listaMarcacoes}">
+                            <td th:text="${marcacao.data}"></td>
+                            <td th:text="${marcacao.horaComeco}"></td>
+                            <td th:text="${marcacao.duracao}"></td>
+                            <td>
+                                <span th:if="${marcacao.sala == null}">Online</span>
+                                <span th:if="${marcacao.sala != null}" th:text="${marcacao.sala}"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div th:fragment="scripts">
+        <script>
+            document.querySelectorAll('.btn-selecionar').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var formContainer = document.getElementById('form-container');
+                    var teseId = this.getAttribute('data-id');
+                    document.getElementById('idTese').value = teseId;
+                    formContainer.style.display = 'block';
+                });
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>

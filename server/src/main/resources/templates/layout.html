@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html th:fragment="layout (content, scripts)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 40px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .submenu a {
+            font-size: 20px;
+            color: #bbb;
+        }
+
+        .submenu a:hover {
+            color: #f1f1f1;
+        }
+
+        .submenu.show {
+            display: block;
+            max-height: 200px;
+            /* Adjust based on content */
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        #content {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div layout:fragment="header">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a th:href="@{/themes}">Themes</a>
+                <a href="javascript:void(0)" onclick="toggleSubmenu()">Defenses</a>
+                <div id="defensesSubmenu" class="submenu">
+                    <a th:href="@{/defenses/thesis}">Final Thesis</a>
+                    <a th:href="@{/defenses/thesisProposal}">Thesis Proposal</a>
+                </div>
+                <a href="javascript:void(0)" onclick="toggleGradesSubmenu()">Grades</a>
+                <div id="gradesSubmenu" class="submenu">
+                    <a th:href="@{/grades/finalDefenses}">Final Defenses</a>
+                    <a th:href="@{/grades/thesisProposals}">Thesis Proposals</a>
+                </div>
+                <a th:href="@{/stats}">Statistics</a>
+            </div>
+
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; ThesisMan</span>
+            </div>
+        </div>
+        <div id="content">
+            <div th:replace="${content}">
+                <!-- Placeholder content for prototyping purposes -->
+                <h2>Static content for prototyping purposes only</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                    Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                    Phasellus et placerat elit.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div th:replace="${scripts}"></div> <!-- Placeholder for additional scripts -->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.getElementById("content").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("content").style.marginLeft = "0";
+            if (document.getElementById("defensesSubmenu").classList.contains("show")) {
+                toggleSubmenu();
+            }
+            if (document.getElementById("gradesSubmenu").classList.contains("show")) {
+                toggleGradesSubmenu();
+            }
+        }
+
+        function toggleSubmenu() {
+            var submenu = document.getElementById("defensesSubmenu");
+            if (submenu.classList.contains("show")) {
+                submenu.classList.remove("show");
+                setTimeout(function () {
+                    submenu.style.display = 'none';
+                }, 500); // Match the transition duration
+            } else {
+                submenu.style.display = 'block';
+                setTimeout(function () {
+                    submenu.classList.add("show");
+                }, 10); // Slight delay to ensure display:block is set
+            }
+        }
+
+        function toggleGradesSubmenu() {
+            var submenu = document.getElementById("gradesSubmenu");
+            if (submenu.classList.contains("show")) {
+                submenu.classList.remove("show");
+                setTimeout(function () {
+                    submenu.style.display = 'none';
+                }, 500); // Match the transition duration
+            } else {
+                submenu.style.display = 'block';
+                setTimeout(function () {
+                    submenu.classList.add("show");
+                }, 10); // Slight delay to ensure display:block is set
+            }
+        }
+    </script>
+</body>
+
+</html>

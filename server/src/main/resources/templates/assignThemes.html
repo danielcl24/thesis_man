@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body th:replace="~{layout :: layout(~{::section} , ~{::scripts})}">
+    <section>
+        <a th:href="@{/themes}"><button>Back</button></a>
+        <div class = "studentsWThemes" th:if="${alunos.size() > 0}">
+            <h1>Students without theme</h1>
+            <table>
+                <thread>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Themes</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <tr th:each="aluno : ${alunos}">
+                        <td th:text="${aluno.name}">Name</td>
+                        <td th:text="${aluno.email}">Email</td>
+                        <td>
+                            <form th:action="@{/themes/assign}" method="post">
+                                <input type="hidden" name="aluno" th:value="${aluno.id}"/>
+                                <label for="themeTitle"></label>
+                                <select id="tema" name="tema" required="required">
+                                    <option th:each="tema : ${temas}" th:value="${tema.id}" th:text="${tema.titulo}"></option>
+                                </select>
+                                <button type="submit">Assign</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+    <div th:fragment="scripts"> </div>
+</body>
+</html>

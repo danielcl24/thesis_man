@@ -1,0 +1,42 @@
+.main_temas_container {
+    -fx-background-color: white;
+}
+
+.user_name {
+    -fx-font-size: 2.0em;
+}
+
+.temas_titulo {
+    -fx-font-size: 1.4em;
+}
+
+.candidatar_button {
+    -fx-pref-width: 115;
+    -fx-pref-height: 40;
+    -fx-background-color: #2c3fb1;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-font-size: 1.1em;
+}
+
+.temas_listview {
+    -fx-background-color: #EEEEEE;
+    -fx-border-width: 0 0 0 0;
+    -fx-border-radius: 10;
+    -fx-border-color: #AAAAAA;
+}
+
+.list-cell {
+    -fx-background-color: #EEEEEE;
+    -fx-padding: 10 10 10 10;
+}
+
+.list-cell:selected {
+    -fx-border-width: 2 2 2 2;
+    -fx-border-color: #2c3fb1;
+}
+
+.status_lbl {
+    -fx-text-fill: #2c3fb1;
+    -fx-font-weight: 700;
+}
